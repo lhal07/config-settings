@@ -130,8 +130,18 @@ map <F4> :call Hide_comments()<cr>
 map <F5> :call Change_tab()<cr>
 map <F6> :call Expand_tab()<cr>
 map <F7> :call Close_pairs()<cr>
+map <C-left> :tabp<cr>
+map <C-right> :tabn<cr>
 
 nnoremap <silent> <F9> :TlistToggle<CR>
+
+" tab navigation like firefox
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-tab>   <Esc>:tabnext<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>
 
 
 set mouse=a
