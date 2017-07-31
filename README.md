@@ -1,2 +1,2 @@
-# vim-config
-Vim Configuration Files
+# config-settings
+Configuration Files
