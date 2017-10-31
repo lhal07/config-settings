@@ -25,6 +25,7 @@ Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Avoid a name conflict with L9
 Plugin 'user/L9', {'name': 'newL9'}
+Plugin 'Syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -123,15 +124,14 @@ fu! Close_pairs()
 endfu
 
 
-
-map <F2> :call Color_it() <cr>
-map <F3> :call Show_blanks()<cr>
-map <F4> :call Hide_comments()<cr>
-map <F5> :call Change_tab()<cr>
-map <F6> :call Expand_tab()<cr>
-map <F7> :call Close_pairs()<cr>
-map <C-left> :tabp<cr>
-map <C-right> :tabn<cr>
+map <F2> :call Color_it()<CR>
+map <F3> :call Show_blanks()<CR>
+map <F4> :call Hide_comments()<CR>
+map <F5> :call Change_tab()<CR>
+map <F6> :call Expand_tab()<CR>
+map <F7> :call Close_pairs()<CR>
+map <C-left> :tabp<CR>
+map <C-right> :tabn<CR>
 
 nnoremap <silent> <F9> :TlistToggle<CR>
 
@@ -144,6 +144,7 @@ inoremap <C-tab>   <Esc>:tabnext<CR>i
 inoremap <C-t>     <Esc>:tabnew<CR>
 
 
+set ttymouse=xterm2
 set mouse=a
 set textwidth=80
 set smartindent
@@ -152,6 +153,14 @@ call Color_it()
 call Change_tab()
 "call Expand_tab()
 "filetype plugin on
+
+if &term =~ '^screen'
+" tmux will send xterm-style keys when its xterm-keys option is on
+  execute "set <xUp>=\e[1;*A"
+  execute "set <xDown>=\e[1;*B"
+  execute "set <xRight>=\e[1;*C"
+  execute "set <xLeft>=\e[1;*D"
+endif
 
 
 filetype plugin on
