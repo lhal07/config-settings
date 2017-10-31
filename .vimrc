@@ -59,7 +59,7 @@ fu! Show_blanks()
       match WhitespaceEOL /\s\+$/
     else
       unlet g:showblank
-      highlight WhitespaceEOL ctermbg=black guibg=black
+      highlight WhitespaceEOL ctermbg=NONE guibg=NONE
       match WhitespaceEOL /\s\+$/
     endif
 endfu
