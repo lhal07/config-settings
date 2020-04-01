@@ -190,7 +190,7 @@ let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
 let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-au BufNewFile,BufRead,BufEnter *.cpp,*.hpp
+"au BufNewFile,BufRead,BufEnter *.cpp,*.hpp
 "set omnifunc=omni#cpp#complete#Main
 set completeopt=menuone,menu,longest,preview
 
