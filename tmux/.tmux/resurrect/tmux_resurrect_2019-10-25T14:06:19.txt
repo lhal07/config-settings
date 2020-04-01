@@ -1,0 +1,3 @@
+pane	_misc_	0	:[tmux]	1	:*	0	:/home/luis	1	bash	:
+window	_misc_	0	1	:*	cc3d,136x38,0,0,0
+state	_misc_	

@@ -1,0 +1,31 @@
+pane	_misc_	0	:bash	0	:-	0	:/home/luis	0	htop	:htop
+pane	_misc_	0	:bash	0	:-	1	:/home/luis	1	bash	:
+pane	_misc_	1	:bash	1	:*	0	:/home/luis	1	bash	:
+pane	dev	0	:portal-vivo-qml	0	:Z	0	:/home/luis/Projects/portal-vivo-qml	0	bash	:
+pane	dev	0	:portal-vivo-qml	0	:Z	1	:/home/luis/Projects/portal-vivo-qml	0	bash	:
+pane	dev	0	:portal-vivo-qml	0	:Z	2	:/home/luis/Projects/portal-vivo-qml	1	bash	:
+pane	dev	1	:info-services	0	:-	0	:/home/luis/Projects/portal-vivo-qml/info-services/src/dvbipi/daemon	0	bash	:
+pane	dev	1	:info-services	0	:-	1	:/home/luis/Projects/portal-vivo-qml/info-services/src/opch/daemon	0	bash	:
+pane	dev	1	:info-services	0	:-	2	:/home/luis/Projects/portal-vivo-qml/info-services	0	bash	:
+pane	dev	1	:info-services	0	:-	3	:/home/luis/Projects/portal-vivo-qml/info-services	1	bash	:
+pane	dev	2	:vim	1	:*	0	:/home/luis/Projects	0	bash	:
+pane	dev	2	:vim	1	:*	1	:/home/luis/Projects/portal-vivo-qml/info-services	1	bash	:
+pane	stb	0	:genbox	0	:-	0	:/home/luis	0	bash	:
+pane	stb	0	:genbox	0	:-	1	:/home/luis	0	bash	:
+pane	stb	0	:genbox	0	:-	2	:/home/luis/Projects/OPENSTB-genbox	1	bash	:
+pane	stb	1	:minicom	1	:*	0	:/home/luis	1	minicom	:fish
+pane	stb	2	:telnet	0	:	0	:/home/luis	0	bash	:
+pane	stb	2	:telnet	0	:	1	:/home/luis	0	bash	:
+pane	stb	2	:telnet	0	:	2	:/home/luis	1	bash	:
+pane	stb	3	:portal is	0	:	0	:/home/luis	0	bash	:
+pane	stb	3	:portal is	0	:	1	:/home/luis	1	bash	:
+window	_misc_	0	0	:-	2346,136x29,0,0{105x29,0,0,1,30x29,106,0,2}
+window	_misc_	1	1	:*	ce40,136x29,0,0,3
+window	dev	0	0	:Z	5964,136x29,0,0{69x29,0,0[69x13,0,0,4,69x15,0,14,5],66x29,70,0,6}
+window	dev	1	0	:-	025c,136x29,0,0{69x29,0,0[69x7,0,0,7,69x6,0,8,8,69x14,0,15,9],66x29,70,0,10}
+window	dev	2	1	:*	8c80,136x29,0,0[136x23,0,0,11,136x5,0,24,12]
+window	stb	0	0	:-	2293,136x29,0,0[136x21,0,0,13,136x7,0,22{74x7,0,22,14,61x7,75,22,15}]
+window	stb	1	1	:*	6755,136x29,0,0,16
+window	stb	2	0	:	7cab,136x29,0,0[136x3,0,0,17,136x22,0,4,18,136x2,0,27,19]
+window	stb	3	0	:	f210,136x29,0,0{68x29,0,0,20,67x29,69,0,21}
+state	_misc_	stb
