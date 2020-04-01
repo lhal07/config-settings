@@ -1,0 +1,9 @@
+[user]
+	name = Luis Lourenço
+	email = lhal07@gmail.com
+[core]
+	editor = vim
+	excludesfile = /home/luis/.gitignore_global
+	sshCommand = ssh -i ~/.ssh/lhal07_rsa -F /dev/null
+[merge]
+	tool = vimdiff
