@@ -43,3 +43,6 @@
 [submodule "tmux/.tmux/tmux-continuum"]
 	path = tmux/.tmux/tmux-continuum
 	url = https://github.com/tmux-plugins/tmux-continuum
+[submodule "vim/.vim/bundle/Vundle.vim"]
+	path = vim/.vim/bundle/Vundle.vim
+	url = git@github.com:VundleVim/Vundle.vim.git
