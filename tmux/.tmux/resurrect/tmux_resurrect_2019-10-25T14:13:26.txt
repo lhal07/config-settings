@@ -1,0 +1,31 @@
+pane	_misc_	0	:bash	1	:*	0	:/home/luis	0	htop	:htop
+pane	_misc_	0	:bash	1	:*	1	:/home/luis	1	bash	:
+pane	_misc_	1	:bash	0	:-	0	:/home/luis/Arquivos/Backup/Email	1	bash	:
+pane	dev	0	:portal-vivo-qml	0	:Z	0	:/home/luis/Projects/portal-vivo-qml	0	bash	:
+pane	dev	0	:portal-vivo-qml	0	:Z	1	:/home/luis/Projects/portal-vivo-qml	0	bash	:
+pane	dev	0	:portal-vivo-qml	0	:Z	2	:/home/luis/Projects/portal-vivo-qml	1	bash	:
+pane	dev	1	:info-services	0	:-	0	:/home/luis/Projects/portal-vivo-qml/info-services/src/dvbipi/daemon	0	bash	:
+pane	dev	1	:info-services	0	:-	1	:/home/luis/Projects/portal-vivo-qml/info-services/src/opch/daemon	0	bash	:
+pane	dev	1	:info-services	0	:-	2	:/home/luis/Projects/portal-vivo-qml/info-services	0	bash	:
+pane	dev	1	:info-services	0	:-	3	:/home/luis/Projects/portal-vivo-qml/info-services	1	bash	:
+pane	dev	2	:vim	1	:*	0	:/home/luis/Projects	0	bash	:
+pane	dev	2	:vim	1	:*	1	:/home/luis/Projects/portal-vivo-qml/info-services	1	bash	:
+pane	stb	0	:genbox	0	:-	0	:/home/luis	0	bash	:sudo /opt/genbox/bin/genbox-ng
+pane	stb	0	:genbox	0	:-	1	:/home/luis	1	bash	:sudo su
+pane	stb	0	:genbox	0	:-	2	:/home/luis/Projects/OPENSTB-genbox	0	bash	:
+pane	stb	1	:minicom	1	:*	0	:/home/luis	1	minicom	:fish
+pane	stb	2	:telnet	0	:	0	:/home/luis	0	fish	:fish
+pane	stb	2	:telnet	0	:	1	:/home/luis	0	telnet	:fish
+pane	stb	2	:telnet	0	:	2	:/home/luis	1	fish	:fish
+pane	stb	3	:portal is	0	:	0	:/home/luis	0	bash	:sudo /opt/genbox/bin/genbox-ng
+pane	stb	3	:portal is	0	:	1	:/home/luis	1	bash	:sudo /opt/genbox/bin/genbox-ng
+window	_misc_	0	1	:*	9f0a,136x38,0,0{105x38,0,0,3,30x38,106,0,4}
+window	_misc_	1	0	:-	cc42,136x38,0,0,5
+window	dev	0	0	:Z	4504,136x38,0,0{69x38,0,0[69x17,0,0,6,69x20,0,18,7],66x38,70,0,8}
+window	dev	1	0	:-	8ea8,136x38,0,0{69x38,0,0[69x10,0,0,9,69x9,0,11,10,69x17,0,21,11],66x38,70,0,12}
+window	dev	2	1	:*	6b8a,136x38,0,0[136x27,0,0,13,136x10,0,28,14]
+window	stb	0	0	:-	8268,136x38,0,0[136x25,0,0,15,136x12,0,26{74x12,0,26,16,61x12,75,26,17}]
+window	stb	1	1	:*	6657,136x38,0,0,18
+window	stb	2	0	:	2e26,136x38,0,0[136x1,0,0,19,136x34,0,2,20,136x1,0,37,21]
+window	stb	3	0	:	6fd5,136x38,0,0{68x38,0,0,22,67x38,69,0,23}
+state	stb	dev

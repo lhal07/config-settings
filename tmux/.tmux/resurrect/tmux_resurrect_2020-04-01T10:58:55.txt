@@ -1,0 +1,7 @@
+pane	eletricsheep	0	:fish	1	:*	0	:/home/luis	1	fish	:
+pane	epoch	0	:htop	1	:*	0	:/home/luis/Arquivos/Projetos	1	fish	:
+pane	epoch	1	:fish	0	:-	0	:/home/luis/Arquivos/Downloads	1	fish	:
+window	eletricsheep	0	1	:*	b2fe,124x32,0,0,1
+window	epoch	0	1	:*	b2ff,124x32,0,0,2
+window	epoch	1	0	:-	b300,124x32,0,0,3
+state	epoch	eletricsheep

@@ -1,0 +1,7 @@
+pane	eletricsheep	0	:[tmux]	1	:*	0	:/home/luis	1	fish	:
+pane	epoch	0	:fish	1	:*	0	:/home/luis/Arquivos/Projetos/Telefonica/Tmux	1	fish	:
+pane	epoch	1	:python3	0	:-	0	:/home/luis	1	python3	:/usr/bin/python3 /usr/bin/aurman -Syyu --noconfirm
+window	eletricsheep	0	1	:*	b2fd,124x32,0,0,0
+window	epoch	0	1	:*	b2fe,124x32,0,0,1
+window	epoch	1	0	:-	b300,124x32,0,0,3
+state	epoch	

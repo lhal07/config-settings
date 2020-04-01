@@ -34,9 +34,12 @@
 [submodule ".vim/bundle/vim-qml"]
 	path = .vim/bundle/vim-qml
 	url = https://github.com/peterhoeg/vim-qml.git
-[submodule ".tmux/tmux-resurrect"]
-	path = .tmux/tmux-resurrect
+[submodule "tmux/.tmux/tmux/.tmux/tmux-continuum"]
+	path = tmux/.tmux/tmux/.tmux/tmux-continuum
+	url = https://github.com/tmux-plugins/tmux-continuum
+[submodule "tmux/.tmux/tmux-resurrect"]
+	path = tmux/.tmux/tmux-resurrect
 	url = https://github.com/tmux-plugins/tmux-resurrect
-[submodule ".tmux/tmux-continuum"]
-	path = .tmux/tmux-continuum
+[submodule "tmux/.tmux/tmux-continuum"]
+	path = tmux/.tmux/tmux-continuum
 	url = https://github.com/tmux-plugins/tmux-continuum
