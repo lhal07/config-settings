@@ -1,0 +1,72 @@
+own_window yes
+background yes
+font Zekton:size=7
+xftfont Zekton:size=7
+use_xft yes
+xftalpha 0.1
+update_interval 1.0
+total_run_times 0
+own_window yes
+double_buffer yes
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+minimum_size 200 5
+maximum_width 260
+default_color d7d7d7
+default_shade_color black
+default_outline_color black
+alignment top_right
+gap_x 2
+gap_y 10
+no_buffers yes
+cpu_avg_samples 2
+override_utf8_locale no
+uppercase no # set to yes if you want all text to be in uppercase
+use_spacer no
+
+TEXT
+${font Zekton:style=Bold:pixelsize=20}${alignc}${time %H:%M}${font Zekton:size=8}
+${font Zekton:style=Bold:pixelsize=10}${alignc}${time %A - %D}${font Zekton:size=8}
+SYSTEM ${hr 1 }
+Hostname: $alignr$nodename
+Kernel: $alignr$kernel
+Uptime: $alignr$uptime
+Processes: ${alignr}$processes ($running_processes running)
+Load: ${alignr}$loadavg
+CPU ${alignc} ${freq}MHz / ${acpitemp}C ${alignr}(${cpu cpu1}%)
+${cpubar 4 cpu1}
+${cpugraph}
+RAM ${alignr}$mem / $memmax ($memperc%)
+${membar 4}
+SWAP ${alignr}$swap / $swapmax ($swapperc%)
+${swapbar 4}
+Highest CPU $alignr CPU% MEM%
+${top name 1}$alignr${top cpu 1}${top mem 1}
+${top name 2}$alignr${top cpu 2}${top mem 2}
+${top name 3}$alignr${top cpu 3}${top mem 3}
+
+Highest MEM $alignr CPU% MEM%
+${top_mem name 1}$alignr${top_mem cpu 1}${top_mem mem 1}
+${top_mem name 2}$alignr${top_mem cpu 2}${top_mem mem 2}
+${top_mem name 3}$alignr${top_mem cpu 3}${top_mem mem 3}
+FILESYSTEM ${hr 1}${color}
+/: $alignr ${fs_used /} / ${fs_size /} ($alignr${fs_free_perc /}%)
+${fs_bar 4 /}
+/home: $alignr ${fs_used /home/} / ${fs_size /home} ($alignr${fs_free_perc /home}%)
+${fs_bar 4 /home}
+HD I/O ${diskiograph /dev/sda}
+NETWORK ${hr 1}${color}
+#IP ${alignr}${execi 3600 wget -O - http://www.whatismyip.org/ | tail}
+#${if_up eth0}Local IP ${alignr}${addr eth0}
+${if_existing /proc/net/route eth0}Local IP ${alignr}${addr eth0}
+Down ${downspeed eth0}/s ${alignr}Up ${upspeed eth0}/s
+${downspeedgraph eth0 25,107 cccccc ffffff} ${alignr}${upspeedgraph eth0 25,107 cccccc ffffff}
+Total ${totaldown eth0} ${alignr}Total ${totalup eth0}
+${else}Local IP ${alignr}${addr wlan0}
+Signal Strength ${alignr}${wireless_link_qual_perc wlan0}%
+#${wireless_link_bar 4 wlan0}
+Down ${downspeed wlan0}/s ${alignr}Up ${upspeed wlan0}/s
+${downspeedgraph wlan0 25,107 cccccc ffffff} ${alignr}${upspeedgraph wlan0 25,107 cccccc ffffff}
+Total ${totaldown wlan0} ${alignr}Total ${totalup wlan0}${endif}

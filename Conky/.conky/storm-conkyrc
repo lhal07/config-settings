@@ -1,0 +1,148 @@
+# Use Xft?
+#use_xft yes
+xftfont Ubuntu:size=9
+#xftfont DejaVu Sans:size=8
+xftalpha 0.8
+text_buffer_size 2048
+color0 FFFFFF
+color1 FCAF3E
+color2 000000
+color3 a00000
+
+# Update interval in seconds
+update_interval 1
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Create own window instead of using desktop (required in nautilus)
+own_window yes
+own_window_transparent yes
+own_window_type override
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Minimum size of text area
+minimum_size 180 0
+#maximum_width 200
+
+# Draw shades?
+draw_shades no
+
+# Draw outlines?
+draw_outline no
+
+# Draw borders around text
+draw_borders no
+draw_graph_borders no
+
+# Stippled borders?
+stippled_borders 0
+
+# border margins
+border_margin 5
+
+# border width
+border_width 1
+
+# Default colors and also border colors
+#default_color black
+default_color white
+#default_shade_color black
+default_outline_color white
+own_window_colour white
+
+# Text alignment, other possible values are commented
+#alignment top_left
+alignment top_right
+#alignment bottom_left
+#alignment bottom_right
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+gap_x 70
+gap_y 35
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+uppercase no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+net_avg_samples 2
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale yes
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+use_spacer none
+
+TEXT
+${voffset -12}${goto 54}${font Arial Black:size=32}${color}${time %H}${color}${voffset 0}${time :%M}${font}${voffset -24}${font Liberation Sans:style=Bold:size=13}${color}${time :%S}${color}${font}
+${voffset 25}${alignc}${font Liberation Sans:style=Bold:size=14}${color}${time %A}${color}${font}
+${goto 90}${time %d %b %Y}
+
+${font style=bold}${nodename} ${hr 2}${font}
+ ${voffset 2}Kernel:  ${alignr}${kernel}
+ Uptime: ${alignr}${uptime}
+ Processos: ${alignr}$processes ($running_processes running)
+ Load: ${alignr}$loadavg
+ CPU freq/temp: ${alignr} ${freq}MHz / ${acpitemp}C ${alignr}
+ CPU1: ${cpu cpu1}% ${alignr}CPU2: ${cpu cpu2}% 
+ ${cpubar cpu1 6,110} ${alignr}${cpubar cpu2 6,110}
+ ${cpugraph}
+ ${voffset -6}RAM ${alignr}$mem / $memmax ($memperc%) ${alignr}${membar 6,60}
+ SWAP ${alignr}$swap / $swapmax ($swapperc%) ${alignr}${swapbar 6,60}
+
+ ${voffset -6}Highest CPU $alignr CPU% MEM%
+ ${top name 1}$alignr${top cpu 1}${top mem 1}
+ ${top name 2}$alignr${top cpu 2}${top mem 2}
+ ${top name 3}$alignr${top cpu 3}${top mem 3}
+
+ ${voffset -6}Highest MEM $alignr CPU% MEM%
+ ${top_mem name 1}$alignr${top_mem cpu 1}${top_mem mem 1}
+ ${top_mem name 2}$alignr${top_mem cpu 2}${top_mem mem 2}
+ ${top_mem name 3}$alignr${top_mem cpu 3}${top_mem mem 3}
+
+${voffset -6}${font style=bold}HD ${hr 2}${font}
+ ${voffset 2}Root: ${fs_used /}/${fs_size /} (${fs_free_perc /}%) ${alignr}${fs_bar 6,60 /}
+ Home: ${fs_free /home}/${fs_size /home} (${fs_free_perc /home}%) ${alignr}${fs_bar 6,60 /home}
+ I/O:
+ ${diskiograph /dev/sda}
+${voffset -6}${font style=bold}REDE ${hr 2}${font}
+#IP ${alignr}${execi 3600 wget -O - http://www.whatismyip.org/ | tail}
+#${if_up eth0}Local IP ${alignr}${addr eth0}
+${voffset 2}${if_existing /proc/net/route eth0}Local IP ${alignr}${addr eth0}
+Down ${downspeed eth0}/s ${alignr}Up ${upspeed eth0}/s
+${downspeedgraph eth0 25,110 cccccc ffffff} ${alignr}${upspeedgraph eth0 25,110 cccccc ffffff}
+Total ${totaldown eth0} ${alignr}Total ${totalup eth0}
+${else}Local IP ${alignr}${addr wlan0}
+Signal Strength ${alignr}${wireless_link_qual_perc wlan0}%
+#${wireless_link_bar 4 wlan0}
+Down ${downspeed wlan0}/s ${alignr}Up ${upspeed wlan0}/s
+${downspeedgraph wlan0 25,110 cccccc ffffff} ${alignr}${upspeedgraph wlan0 25,110 cccccc ffffff}
+Total ${totaldown wlan0} ${alignr}Total ${totalup wlan0}${endif}
+
+
+#${voffset -6}${font PizzaDude Bullets:size=14}O${font}   Up: ${alignr}${upspeedgraph ppp0 8,60 F57900 FCAF3E}
+#${voffset 4}${font PizzaDude Bullets:size=14}U${font}   Down:${alignr}${downspeedgraph ppp0 8,60 F57900 FCAF3E}
+#${voffset 4}${font PizzaDude Bullets:size=14}N${font}   Upload: ${alignr}${upspeed eth0} kb/s
+#${voffset 4}${font PizzaDude Bullets:size=14}T${font}   Download: ${alignr}${downspeed eth0} kb/s
+
+
+
+
+#${font style=bold}CALENDÁRIO ${hr 2}${font}
+#
+#${font DejaVu Sans:pixelsize=14:style=Bold}${alignc}${execi 60 date +"%B %Y" | tr "[:lower:]" "[:upper:]"}${font Snap.se:size=8 }${font}
+#${font DejaVu Sans Mono:size=10}${execpi 60 cal | sed '1d' | sed '3d' | sed '2d' | sed '2d' | sed '2d' | sed '2d' | sed '2d' | sed 's/^/${alignc} /'}${font} 
+#${font DejaVu Sans Mono:size=10}${execpi 60 DJS=`date +%_d`; cal | sed '1d' | sed '/./!d' | sed 's/$/                    /' | fold -w 21 | sed -n '/^.\{21\}/p' | sed 's/^/${alignc} /' | sed /" $DJS "/s/" $DJS "/" "'${color3}''${font DejaVu Sans Mono:style=bold:size=10}'"$DJS"'${color2}''${font DejaVu Sans Mono:size=10}'" "/}${font}
