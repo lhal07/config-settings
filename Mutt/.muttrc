@@ -1,0 +1,211 @@
+#MAILBOXES, MY NAME, FOLDERS
+#my_hdr From: rsa04@inf.ufpr.br
+set realname="Luis Lourenço"
+set folder="~/Mail"			# where my mailboxes are
+set postponed="~/Mail/INBOX.Drafts"		# where postponed stuff goes
+set mbox=+mbox				# mail from spool gets copied in here
+#mailboxes /var/spool/mail/{user_name}	# my mailboxes filtered by procmail
+mailboxes ~/Mail/Mailbox ~/Mail/CompMus-l ~/Mail/BRD
+#Aliasses
+#source ~/.mutt/emails
+
+set envelope_from="yes"
+
+#Visualizar text/html e outros com COPIOUSOUTPUT em mailcap
+auto_view text/html
+set implicit_autoview="yes"
+
+#Mensagens internas
+send-hook . 'my_hdr From: <luis@inf.ufpr.br>'
+send-hook . 'set signature="~/.mutt_assinatura"'
+#send-hook . 'set sendmail="/usr/sbin/sendmail"'
+
+##Mensagens Padroes
+#send-hook @ ' my_hdr From: <alemao84@superig.com.br>'
+#send-hook @ 'set signature="~/ass_superig.txt"'
+#send-hook @ 'set sendmail="/usr/bin/msmtp"'
+
+#Mensagens internas
+#send-hook @chobits 'my_hdr From: <bruno>'
+#send-hook @chobits 'set signature="~/.signature_local"'
+#send-hook @chobits 'set sendmail="/usr/sbin/sendmail"'
+
+
+#PARA UFPR
+#send-hook ufpr.br  'my_hdr From: <ribas@ufpr.br>'
+#send-hook ufpr.br 'set signature="~/.signature"'
+#send-hook ufpr.br 'set sendmail="/usr/sbin/sendmail"'
+
+#PARA ORGS
+#send-hook .org  'my_hdr From: <ribas@ufpr.br>'
+#send-hook .org 'set signature="~/.signature"'
+#send-hook .org 'set sendmail="/usr/bin/msmtp"'
+
+#PARA HASHI
+#send-hook hashibrasil.org	my_hdr From: <bruno@hashibrasil.org>
+#send-hook '~t hashi' my_hdr From: <hashi@ahshi.c>
+
+#sent mail should not be defined as a mailbox
+#mailboxes /home/{user_name}/muttmail/sent
+#set editor={text_editor}               # yay! emacs key bindings
+#set editor="vim +':set textwidth=77' +':set wrap' +\`awk '/^$/ {print i+2; exit} {i++}' %s\` %s" 
+set editor="vim +':set textwidth=80' +':set wrap' +$" 
+set autoedit=yes
+
+#copies my sent mail to mailbox sent_mail
+set copy=yes                    # + is a mailbox shortcut.
+set record=+INBOX.Sent                # it expands to whatever you set in folder
+
+#HOW STUFF LOOKS
+
+#order of headers when i read mail
+hdr_order Date: From: Organization: User-Agent: X-Mailer To: Cc: Reply-To: Subject:
+
+#ignore all headers, then unignore the ones I wanna see
+ignore *
+unignore Date: From: Organization: User-Agent: X-Mailer To: Cc: Reply-To: Subject:
+
+set forward_format="Fwd: %s"    # forwarded mail say this
+
+#what the date format looks like
+set date_format="!%a, %b %d, %Y at %I:%M:%S%p %Z"
+
+#what mailboxes/folders look like
+set folder_format="%-8.8u %8s %d  %N %f"
+
+#set edit_headers         # i like to see the headers when composing email
+set pager_context=1      # paging shows me one line leftover
+set pager_stop           # prevent pager from going to next message unlesss you say so
+set nomarkers            # no wrap around markers
+
+#defaults for all folders are threaded w/ mini index of 11 lines "." means all mailboxes
+folder-hook . set sort=threads
+folder-hook . set pager_index_lines=6 # i get to see the index and pager together when paging
+
+#these don't get sorted by threads
+#folder-hook /var/spool/mail/{user_name} set sort=date-received
+folder-hook +sent set sort=date-sent
+
+#sets what folders look like, which fields go where, in what order, etc...
+folder-hook . 'set index_format="%4C %Z %{%b %d} %-15.15F (%4l) %s"'
+
+#HOW MUTT BEHAVES
+unset mark_old       # unread old messages are still unread after quitting
+set auto_tag         # when tag articles, actions are default for all tagged messages
+set quit=ask-yes     # ask me to quit. default no
+unset confirmappend  # don't ask me about appending messages to other boxes
+set move=no			# Don't ask to move read messages to mbox on exit
+
+
+#KEY BINDINGS
+bind generic    "#"     tag-entry
+bind generic    <left>  previous-entry
+bind generic    <right> next-entry
+bind index  "c"         copy-message
+bind index   "\Cx\Cf"   change-folder
+bind pager  "c"         copy-message
+bind pager  "#"         tag-message
+bind pager  <up>        previous-line
+bind pager  <down>      next-line
+bind pager   "<"        top
+bind pager   ">"        bottom
+bind pager   <home>     top
+bind pager   <end>      bottom
+bind pager   "{"        previous-thread
+bind pager   "}"        next-thread
+bind pager   "\Cx\Cf"   change-folder
+bind browser "e"        check-new
+
+macro index "\Cx\Cb" "<change-folder>?" # Folder list.
+macro index "w" "<change-folder>?"      # Folder list.
+macro index "\Cx\Cs" "|cat > ~/"        # Save message
+macro pager "\Cx\Cb" "<change-folder>?" # Folder list.
+macro pager "w" "<change-folder>?"      # Folder list.
+macro pager "\Cx\Cs" "|cat > ~/"        # Save message
+
+
+#COLORS
+#color normal default default
+#color hdrdefault brightcyan default
+#color signature green default
+#color attachment brightyellow default
+#color indicator brightblack  brightcyan
+#color quoted   green   default
+#color quoted1  white   default
+#color tilde    blue    default
+##color quoted2 cyan    default
+##color quoted3 white   default
+##color quoted4 red     default
+##color quoted5 green   default
+##color quoted6 cyan    default
+##color quoted7 white   default
+##color quoted8 red     default
+##color quoted9 green   default
+#color body brightcyan  default "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+#color body brightwhite  default "(http|ftp|news|telnet|finger)://[^ \">\t\r\n]*"
+#color body brightwhite  default "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+#color header brightmagenta default ^(Date):
+#color header brightyellow default ^Subject:
+#color body brightred default " [;:]-*[)>(<|]"       # :-) etc...
+
+##!!!!!!!!  VER OQ EH ISSO!!!!set alias_file=~/.mutt/mutt-aliases
+##!!!!!!!!!!source ~/.mutt/mutt-aliases
+
+unset pipe_decode
+
+# set charset="UTF-8"
+# charset-hook US-ASCII ISO-8859-1
+# charset-hook x-unknown ISO-8859-1
+# charset-hook windows-1250 CP1250
+# charset-hook windows-1251 CP1251
+# charset-hook windows-1251 CP1251
+# charset-hook windows-1252 CP1252
+# charset-hook windows-1252 CP1252
+# charset-hook windows-1253 CP1253
+# charset-hook windows-1254 CP1254
+# charset-hook windows-1255 CP1255
+# charset-hook windows-1256 CP1256
+# charset-hook windows-1257 CP1257
+# charset-hook windows-1258 CP1258
+# set locale=pt_BR.UTF-8
+
+
+set charset="utf-8"
+#set charset="us-ascii"
+#set send_charset="iso-8859-1:utf-8:us-ascii"
+set send_charset="utf-8:us-ascii"
+#set assumed_charset="iso-8859-1:utf-8:us-ascii"
+set assumed_charset="utf-8:us-ascii"
+set locale="pt_BR.UTF-8"
+set save_address="yes"
+set beep_new="yes"
+
+#set charset="iso-8859-1"
+##set charset="us-ascii"
+#set send_charset="iso-8859-1:utf-8:us-ascii"
+#set assumed_charset="iso-8859-1:utf-8:us-ascii"
+#set locale="pt_BR.ISO-8859-1"
+#set save_address="yes"
+#set beep_new="yes"
+
+#$beep="|aplay ~/sons/newmail.wav"
+##
+##LISTAS
+##
+#lists prd@c3sl.ufpr.br
+#subscribe prd@c3sl.ufpr.br
+
+set fcc_attach="yes"
+set forward_quote="yes"
+
+
+##
+## Macros criadas para simular uma lixeira
+##
+folder-hook .  'macro pager d "s~/Mail/INBOX.Trash\n" "move message to trash"'
+folder-hook .  'macro index d "s~/Mail/INBOX.Trash\n" "move message to trash"'
+folder-hook trash 'macro pager d "<delete-message>" "delete message"'
+folder-hook trash 'macro index d "<delete-message>" "delete message"'
+
+
+
